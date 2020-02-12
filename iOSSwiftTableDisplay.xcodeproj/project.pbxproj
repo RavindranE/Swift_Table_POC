@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2D4401F723F3C1B1005DB551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4401F623F3C1B1005DB551 /* AppDelegate.swift */; };
-		2D4401F923F3C1B1005DB551 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4401F823F3C1B1005DB551 /* ViewController.swift */; };
-		2D4401FC23F3C1B1005DB551 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4401FA23F3C1B1005DB551 /* Main.storyboard */; };
 		2D4401FE23F3C1B3005DB551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D4401FD23F3C1B3005DB551 /* Assets.xcassets */; };
 		2D44020123F3C1B3005DB551 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4401FF23F3C1B3005DB551 /* LaunchScreen.storyboard */; };
 		2D44020C23F3C1B3005DB551 /* iOSSwiftTableDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44020B23F3C1B3005DB551 /* iOSSwiftTableDisplayTests.swift */; };
 		2D44021723F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44021623F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift */; };
+		2D44023123F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
+		2D44023223F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
+		2D44023323F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +37,6 @@
 /* Begin PBXFileReference section */
 		2D4401F323F3C1B1005DB551 /* iOSSwiftTableDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSSwiftTableDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4401F623F3C1B1005DB551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2D4401F823F3C1B1005DB551 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2D4401FB23F3C1B1005DB551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D4401FD23F3C1B3005DB551 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D44020023F3C1B3005DB551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D44020223F3C1B3005DB551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		2D44021223F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSSwiftTableDisplayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D44021623F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftTableDisplayUITests.swift; sourceTree = "<group>"; };
 		2D44021823F3C1B3005DB551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D44023023F3C655005DB551 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +97,8 @@
 		2D4401F523F3C1B1005DB551 /* iOSSwiftTableDisplay */ = {
 			isa = PBXGroup;
 			children = (
+				2D44022823F3C4EC005DB551 /* Home */,
 				2D4401F623F3C1B1005DB551 /* AppDelegate.swift */,
-				2D4401F823F3C1B1005DB551 /* ViewController.swift */,
-				2D4401FA23F3C1B1005DB551 /* Main.storyboard */,
 				2D4401FD23F3C1B3005DB551 /* Assets.xcassets */,
 				2D4401FF23F3C1B3005DB551 /* LaunchScreen.storyboard */,
 				2D44020223F3C1B3005DB551 /* Info.plist */,
@@ -123,6 +122,70 @@
 				2D44021823F3C1B3005DB551 /* Info.plist */,
 			);
 			path = iOSSwiftTableDisplayUITests;
+			sourceTree = "<group>";
+		};
+		2D44022823F3C4EC005DB551 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2D44022923F3C533005DB551 /* Home-Entity */,
+				2D44022A23F3C551005DB551 /* Home-Interactor */,
+				2D44022B23F3C579005DB551 /* Home-Others */,
+				2D44022C23F3C583005DB551 /* Home-Presenter */,
+				2D44022D23F3C58E005DB551 /* Home-Resources */,
+				2D44022E23F3C59D005DB551 /* Home-Router */,
+				2D44022F23F3C5A9005DB551 /* Home-View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2D44022923F3C533005DB551 /* Home-Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home-Entity";
+			sourceTree = "<group>";
+		};
+		2D44022A23F3C551005DB551 /* Home-Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home-Interactor";
+			sourceTree = "<group>";
+		};
+		2D44022B23F3C579005DB551 /* Home-Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home-Others";
+			sourceTree = "<group>";
+		};
+		2D44022C23F3C583005DB551 /* Home-Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home-Presenter";
+			sourceTree = "<group>";
+		};
+		2D44022D23F3C58E005DB551 /* Home-Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home-Resources";
+			sourceTree = "<group>";
+		};
+		2D44022E23F3C59D005DB551 /* Home-Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home-Router";
+			sourceTree = "<group>";
+		};
+		2D44022F23F3C5A9005DB551 /* Home-View */ = {
+			isa = PBXGroup;
+			children = (
+				2D44023023F3C655005DB551 /* HomeViewController.swift */,
+			);
+			path = "Home-View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +294,6 @@
 			files = (
 				2D44020123F3C1B3005DB551 /* LaunchScreen.storyboard in Resources */,
 				2D4401FE23F3C1B3005DB551 /* Assets.xcassets in Resources */,
-				2D4401FC23F3C1B1005DB551 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +318,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D4401F923F3C1B1005DB551 /* ViewController.swift in Sources */,
 				2D4401F723F3C1B1005DB551 /* AppDelegate.swift in Sources */,
+				2D44023123F3C655005DB551 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D44020C23F3C1B3005DB551 /* iOSSwiftTableDisplayTests.swift in Sources */,
+				2D44023223F3C655005DB551 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D44021723F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift in Sources */,
+				2D44023323F3C655005DB551 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +357,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2D4401FA23F3C1B1005DB551 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D4401FB23F3C1B1005DB551 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2D4401FF23F3C1B3005DB551 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -433,13 +489,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N84Y77X8V9;
+				DEVELOPMENT_TEAM = C5HB2CCN8Z;
 				INFOPLIST_FILE = iOSSwiftTableDisplay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iOSSwiftTableDisplay.org.iOSSwiftTableDisplay;
+				PRODUCT_BUNDLE_IDENTIFIER = iOSSwiftTableDisplay.org;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,13 +508,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N84Y77X8V9;
+				DEVELOPMENT_TEAM = C5HB2CCN8Z;
 				INFOPLIST_FILE = iOSSwiftTableDisplay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iOSSwiftTableDisplay.org.iOSSwiftTableDisplay;
+				PRODUCT_BUNDLE_IDENTIFIER = iOSSwiftTableDisplay.org;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
