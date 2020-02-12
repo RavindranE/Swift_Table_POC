@@ -8,17 +8,28 @@
 
 import Foundation
 import UIKit
-//Local Constant
-let defaultNavigationTitle = "Table Display"
-let textCellIdentifier = "Cell"
+import Alamofire
+protocol HomeViewToPresenter:class{
+
+    func setViewDelegate(delegate:HomePresenterToView)
+    func initiateDataLoading()
+    
+}
 
 class HomeViewController: UIViewController, UITableViewDataSource {
+    //Delegate
+    private var presenterDelegate:HomeViewToPresenter?
     //Initialize Table resource
     let tableDataView = UITableView(frame: UIScreen.main.bounds)
+    var dataList:Array<TableRows> = Array()
     
     override func viewDidLoad() {
         super .viewDidLoad()
         view.backgroundColor = .white
+        
+        //SetDelegate
+        self.presenterDelegate = HomePresenter()
+        self.presenterDelegate?.setViewDelegate(delegate: self)
         
         //Navigation for Controller
         self.setControllerNavigation()
@@ -26,14 +37,12 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         //Set Table as Child view of View
         view.addSubview(tableDataView)
         
-        //Register TableViewCell
-        tableDataView.register(UITableViewCell.self, forCellReuseIdentifier: textCellIdentifier)
-        
         //Set Table Source
         tableDataView.dataSource = self
         
         //Table Layout Alignment
         self.tableLayoutAlignment()
+        presenterDelegate?.initiateDataLoading()
 
     }
     //MARK: - Set Auto Layout for Table
@@ -63,12 +72,40 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         return 1;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20; //test count
+        return dataList.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
-        return cell;
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableCell
+        cell.cellTitle.text = dataList[indexPath.row].title
+        cell.cellDescription.text = dataList[indexPath.row].description
+        
+        //Image loading
+        
+        AF.request(self.dataList[indexPath.row].imageHref!).responseData { (response) in
+            if response.error == nil {
+                print(response.result)
+                if let data = response.data {
+                    cell.cellImage.image = UIImage(data: data)
+                }
+            }
+        }
+        
+        return cell
+    }
+    
+    
+}
+
+extension HomeViewController:HomePresenterToView{
+    func onTableDataResponseSuccess(tableDataArrayList: Array<TableRows>) {
+        self.dataList = tableDataArrayList
+        self.tableDataView.reloadData()
+    }
+    
+    func onTableDataResponseFailed(error: String) {
+        print("error")
     }
     
     

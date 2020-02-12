@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,14 @@
 		2D44023123F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
 		2D44023223F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
 		2D44023323F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
+		2D44023923F3D444005DB551 /* TableRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023823F3D444005DB551 /* TableRows.swift */; };
+		2D44023D23F3D8D5005DB551 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023C23F3D8D5005DB551 /* HomeInteractor.swift */; };
+		2D44023F23F3D8E5005DB551 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023E23F3D8E5005DB551 /* HomePresenter.swift */; };
+		2D44024123F3DA9D005DB551 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D44024023F3DA9D005DB551 /* Alamofire.framework */; };
+		2D44024323F3DA9D005DB551 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D44024223F3DA9D005DB551 /* AlamofireObjectMapper.framework */; };
+		2D44024723F3F63D005DB551 /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44024623F3F63D005DB551 /* HomeTableCell.swift */; };
+		2D44024923F3F78F005DB551 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44024823F3F78F005DB551 /* Utilities.swift */; };
+		DFBC088AF33C00B9A0FC7D37 /* Pods_iOSSwiftTableDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF12CA0323EBB911C83AB44 /* Pods_iOSSwiftTableDisplay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,16 @@
 		2D44021623F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftTableDisplayUITests.swift; sourceTree = "<group>"; };
 		2D44021823F3C1B3005DB551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D44023023F3C655005DB551 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2D44023823F3D444005DB551 /* TableRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRows.swift; sourceTree = "<group>"; };
+		2D44023C23F3D8D5005DB551 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		2D44023E23F3D8E5005DB551 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		2D44024023F3DA9D005DB551 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D44024223F3DA9D005DB551 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D44024623F3F63D005DB551 /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
+		2D44024823F3F78F005DB551 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		5AF12CA0323EBB911C83AB44 /* Pods_iOSSwiftTableDisplay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSSwiftTableDisplay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B19D8D81EED4E0A18A51D5D2 /* Pods-iOSSwiftTableDisplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSSwiftTableDisplay.release.xcconfig"; path = "Target Support Files/Pods-iOSSwiftTableDisplay/Pods-iOSSwiftTableDisplay.release.xcconfig"; sourceTree = "<group>"; };
+		B685810E52ED2A9AD8AFD6D1 /* Pods-iOSSwiftTableDisplay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSSwiftTableDisplay.debug.xcconfig"; path = "Target Support Files/Pods-iOSSwiftTableDisplay/Pods-iOSSwiftTableDisplay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D44024123F3DA9D005DB551 /* Alamofire.framework in Frameworks */,
+				2D44024323F3DA9D005DB551 /* AlamofireObjectMapper.framework in Frameworks */,
+				DFBC088AF33C00B9A0FC7D37 /* Pods_iOSSwiftTableDisplay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +102,8 @@
 				2D44020A23F3C1B3005DB551 /* iOSSwiftTableDisplayTests */,
 				2D44021523F3C1B3005DB551 /* iOSSwiftTableDisplayUITests */,
 				2D4401F423F3C1B1005DB551 /* Products */,
+				F77A3CBB52C330BCA5FF02DD /* Pods */,
+				F68E8B79710E260CF7B8AF16 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +125,7 @@
 				2D4401FD23F3C1B3005DB551 /* Assets.xcassets */,
 				2D4401FF23F3C1B3005DB551 /* LaunchScreen.storyboard */,
 				2D44020223F3C1B3005DB551 /* Info.plist */,
+				2D44024823F3F78F005DB551 /* Utilities.swift */,
 			);
 			path = iOSSwiftTableDisplay;
 			sourceTree = "<group>";
@@ -141,6 +165,7 @@
 		2D44022923F3C533005DB551 /* Home-Entity */ = {
 			isa = PBXGroup;
 			children = (
+				2D44023823F3D444005DB551 /* TableRows.swift */,
 			);
 			path = "Home-Entity";
 			sourceTree = "<group>";
@@ -148,6 +173,7 @@
 		2D44022A23F3C551005DB551 /* Home-Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				2D44023C23F3D8D5005DB551 /* HomeInteractor.swift */,
 			);
 			path = "Home-Interactor";
 			sourceTree = "<group>";
@@ -162,6 +188,7 @@
 		2D44022C23F3C583005DB551 /* Home-Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				2D44023E23F3D8E5005DB551 /* HomePresenter.swift */,
 			);
 			path = "Home-Presenter";
 			sourceTree = "<group>";
@@ -184,8 +211,28 @@
 			isa = PBXGroup;
 			children = (
 				2D44023023F3C655005DB551 /* HomeViewController.swift */,
+				2D44024623F3F63D005DB551 /* HomeTableCell.swift */,
 			);
 			path = "Home-View";
+			sourceTree = "<group>";
+		};
+		F68E8B79710E260CF7B8AF16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D44024023F3DA9D005DB551 /* Alamofire.framework */,
+				2D44024223F3DA9D005DB551 /* AlamofireObjectMapper.framework */,
+				5AF12CA0323EBB911C83AB44 /* Pods_iOSSwiftTableDisplay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F77A3CBB52C330BCA5FF02DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B685810E52ED2A9AD8AFD6D1 /* Pods-iOSSwiftTableDisplay.debug.xcconfig */,
+				B19D8D81EED4E0A18A51D5D2 /* Pods-iOSSwiftTableDisplay.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D44021B23F3C1B3005DB551 /* Build configuration list for PBXNativeTarget "iOSSwiftTableDisplay" */;
 			buildPhases = (
+				A536E49FC3578AADC874E80A /* [CP] Check Pods Manifest.lock */,
 				2D4401EF23F3C1B1005DB551 /* Sources */,
 				2D4401F023F3C1B1005DB551 /* Frameworks */,
 				2D4401F123F3C1B1005DB551 /* Resources */,
+				BCF3E3DE738AC396E2F4AB04 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,13 +362,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A536E49FC3578AADC874E80A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSSwiftTableDisplay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCF3E3DE738AC396E2F4AB04 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSSwiftTableDisplay/Pods-iOSSwiftTableDisplay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSSwiftTableDisplay/Pods-iOSSwiftTableDisplay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSSwiftTableDisplay/Pods-iOSSwiftTableDisplay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2D4401EF23F3C1B1005DB551 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2D4401F723F3C1B1005DB551 /* AppDelegate.swift in Sources */,
+				2D44024723F3F63D005DB551 /* HomeTableCell.swift in Sources */,
 				2D44023123F3C655005DB551 /* HomeViewController.swift in Sources */,
+				2D44023F23F3D8E5005DB551 /* HomePresenter.swift in Sources */,
+				2D44023D23F3D8D5005DB551 /* HomeInteractor.swift in Sources */,
+				2D44024923F3F78F005DB551 /* Utilities.swift in Sources */,
+				2D44023923F3D444005DB551 /* TableRows.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +582,7 @@
 		};
 		2D44021C23F3C1B3005DB551 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B685810E52ED2A9AD8AFD6D1 /* Pods-iOSSwiftTableDisplay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -505,6 +602,7 @@
 		};
 		2D44021D23F3C1B3005DB551 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B19D8D81EED4E0A18A51D5D2 /* Pods-iOSSwiftTableDisplay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
