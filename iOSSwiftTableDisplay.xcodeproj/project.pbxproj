@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D087A4823F545EE0029C669 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D087A4723F545EE0029C669 /* TableModel.swift */; };
 		2D4401F723F3C1B1005DB551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4401F623F3C1B1005DB551 /* AppDelegate.swift */; };
 		2D4401FE23F3C1B3005DB551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D4401FD23F3C1B3005DB551 /* Assets.xcassets */; };
 		2D44020123F3C1B3005DB551 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4401FF23F3C1B3005DB551 /* LaunchScreen.storyboard */; };
 		2D44020C23F3C1B3005DB551 /* iOSSwiftTableDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44020B23F3C1B3005DB551 /* iOSSwiftTableDisplayTests.swift */; };
 		2D44021723F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44021623F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift */; };
 		2D44023123F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
-		2D44023223F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
-		2D44023323F3C655005DB551 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023023F3C655005DB551 /* HomeViewController.swift */; };
 		2D44023923F3D444005DB551 /* TableRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023823F3D444005DB551 /* TableRows.swift */; };
 		2D44023D23F3D8D5005DB551 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023C23F3D8D5005DB551 /* HomeInteractor.swift */; };
 		2D44023F23F3D8E5005DB551 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44023E23F3D8E5005DB551 /* HomePresenter.swift */; };
@@ -43,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D087A4723F545EE0029C669 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
 		2D4401F323F3C1B1005DB551 /* iOSSwiftTableDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSSwiftTableDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4401F623F3C1B1005DB551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D4401FD23F3C1B3005DB551 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,7 +125,6 @@
 				2D4401FD23F3C1B3005DB551 /* Assets.xcassets */,
 				2D4401FF23F3C1B3005DB551 /* LaunchScreen.storyboard */,
 				2D44020223F3C1B3005DB551 /* Info.plist */,
-				2D44024823F3F78F005DB551 /* Utilities.swift */,
 			);
 			path = iOSSwiftTableDisplay;
 			sourceTree = "<group>";
@@ -151,12 +150,11 @@
 		2D44022823F3C4EC005DB551 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2D44022923F3C533005DB551 /* Home-Entity */,
-				2D44022A23F3C551005DB551 /* Home-Interactor */,
 				2D44022B23F3C579005DB551 /* Home-Others */,
-				2D44022C23F3C583005DB551 /* Home-Presenter */,
-				2D44022D23F3C58E005DB551 /* Home-Resources */,
 				2D44022E23F3C59D005DB551 /* Home-Router */,
+				2D44022923F3C533005DB551 /* Home-Entity */,
+				2D44022C23F3C583005DB551 /* Home-Presenter */,
+				2D44022A23F3C551005DB551 /* Home-Interactor */,
 				2D44022F23F3C5A9005DB551 /* Home-View */,
 			);
 			path = Home;
@@ -166,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				2D44023823F3D444005DB551 /* TableRows.swift */,
+				2D087A4723F545EE0029C669 /* TableModel.swift */,
 			);
 			path = "Home-Entity";
 			sourceTree = "<group>";
@@ -181,6 +180,7 @@
 		2D44022B23F3C579005DB551 /* Home-Others */ = {
 			isa = PBXGroup;
 			children = (
+				2D44024823F3F78F005DB551 /* Utilities.swift */,
 			);
 			path = "Home-Others";
 			sourceTree = "<group>";
@@ -191,13 +191,6 @@
 				2D44023E23F3D8E5005DB551 /* HomePresenter.swift */,
 			);
 			path = "Home-Presenter";
-			sourceTree = "<group>";
-		};
-		2D44022D23F3C58E005DB551 /* Home-Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Home-Resources";
 			sourceTree = "<group>";
 		};
 		2D44022E23F3C59D005DB551 /* Home-Router */ = {
@@ -413,6 +406,7 @@
 				2D44024723F3F63D005DB551 /* HomeTableCell.swift in Sources */,
 				2D44023123F3C655005DB551 /* HomeViewController.swift in Sources */,
 				2D44023F23F3D8E5005DB551 /* HomePresenter.swift in Sources */,
+				2D087A4823F545EE0029C669 /* TableModel.swift in Sources */,
 				2D44023D23F3D8D5005DB551 /* HomeInteractor.swift in Sources */,
 				2D44024923F3F78F005DB551 /* Utilities.swift in Sources */,
 				2D44023923F3D444005DB551 /* TableRows.swift in Sources */,
@@ -424,7 +418,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D44020C23F3C1B3005DB551 /* iOSSwiftTableDisplayTests.swift in Sources */,
-				2D44023223F3C655005DB551 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +426,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D44021723F3C1B3005DB551 /* iOSSwiftTableDisplayUITests.swift in Sources */,
-				2D44023323F3C655005DB551 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,7 +580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C5HB2CCN8Z;
 				INFOPLIST_FILE = iOSSwiftTableDisplay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,7 +600,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C5HB2CCN8Z;
 				INFOPLIST_FILE = iOSSwiftTableDisplay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

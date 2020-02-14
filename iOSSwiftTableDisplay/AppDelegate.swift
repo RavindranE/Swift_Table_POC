@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Custom View Controller - HomeViewController
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
+        //Set Home View controller as Root view controller
         window?.rootViewController = UINavigationController(rootViewController:HomeViewController())
         return true
     }

@@ -7,15 +7,18 @@
 //
 
 import Foundation
+
+// Protocol communicating to Home.
 protocol HomePresenterToView {
-    //Success
-    func onTableDataResponseSuccess(tableDataArrayList:Array<TableRows>)
-    //Failure
-    func onTableDataResponseFailed(error:String)
+    //Success Response
+    func onTableDataResponseSuccess(tableDataModel:TableModel)
+    //Failure Response
+    func onTableDataResponseFailed(errorMessage:String)
 }
 
-/// Protocol communicating from presenter.
+// Protocol communicating from presenter.
 protocol HomePresenterToInteractor {
+    // Set Presenter delegate.
     func setPresenterDelegate(delegate:HomeInteractorToPresenter)
     func fetchTableDataFromAPI()
 }
@@ -34,25 +37,26 @@ class HomePresenter{
     }
     
 }
+
+//MARK: - Extension for Protocol Methods
 extension HomePresenter:HomeInteractorToPresenter{
 
     // Update Home table Info success
-    func tableDataFetchSuccess(dataList:Array<TableRows>){
-        viewDelegate.onTableDataResponseSuccess(tableDataArrayList: dataList)
+    func tableDataFetchSuccess(tableDataModel:TableModel){
+        viewDelegate.onTableDataResponseSuccess(tableDataModel: tableDataModel)
     }
     
     // Update  Home table Info failure
-    func tableDataFetchFailed(){
-        viewDelegate.onTableDataResponseFailed(error: "API Error")
+    func tableDataFetchFailed(errorMessage:String){
+        viewDelegate.onTableDataResponseFailed(errorMessage: errorMessage)
     }
  
 }
 
 extension HomePresenter : HomeViewToPresenter{
     
-    /// Set View delegate.
-    ///
-    /// - parameter delegate: Delegate object to set as presenter.
+    // Set View delegate.
+    // - parameter delegate: Delegate object to set as presenter.
     func setViewDelegate(delegate:HomePresenterToView){
         self.viewDelegate = delegate
     }

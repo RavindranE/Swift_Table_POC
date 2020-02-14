@@ -9,11 +9,11 @@
 import Foundation
 import ObjectMapper
 
-
 private let TITLE = "title"
 private let DESCRIPTION = "description"
 private let IMAGEHREF = "imageHref"
 
+//Mappable Object for row
 class TableRows:Mappable{
     
     internal var title:String?

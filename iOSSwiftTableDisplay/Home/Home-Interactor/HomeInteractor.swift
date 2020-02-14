@@ -7,61 +7,83 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
-
-
+import Reachability
 
 protocol HomeInteractorToPresenter {
     // Update Home table Info success
-    func tableDataFetchSuccess(dataList:Array<TableRows>)
+    func tableDataFetchSuccess(tableDataModel:TableModel)
     
     // Update  Home table Info failure
-    func tableDataFetchFailed()
+    func tableDataFetchFailed(errorMessage:String)
 }
 
 class HomeInteractor {
     
     private var homePresenterDelegate :HomeInteractorToPresenter!
     
-    private var errorCode : Int?
-    private var errorMessage : String?
-    
-    /// Method to initate More Info
+    // Method to fetch the file content as json to map with required mappable object
     private func fetchTableContent()
     {
-        //To do
+        //fetch json content from remote file
+        if let url = URL(string: API_TABLE_CONTENT_LIST) {
+            do {
+                let fileContent = try String(contentsOf: url, encoding: String.Encoding.isoLatin1)
+                let fileData = Data(fileContent.utf8)
+                do {
+                    // make sure this JSON is in the format we expect
+                    if let json = try JSONSerialization.jsonObject(with: fileData, options: []) as? [String: Any] {
+                        // try to read out a Table Model which has rows and title elements
+                        let tableModel = Mapper<TableModel>().map(JSONObject: json)
+                        //remove the row item where all elements are empty
+                        tableModel?.rows?.removeAll(where: { $0.title == nil && $0.description == nil && $0.imageHref == nil })
 
-//
-//        AF.request(API_TABLE_CONTENT_LIST).responseJSON(completionHandler:
-//            {response in
-//                debugPrint("Response: \(response)")
-//                if(response.response?.statusCode == 200){
-//                    let json1 = try JSONSerialization.jsonObject(with: response.result!, options: []) as? [String : Any]
-//                    if let json = response.result as AnyObject? {
-//                        let arrayResponse = json["rows"] as! NSArray
-//                        let arrayObject = Mapper<TableRows>().mapArray(JSONArray: arrayResponse as! [[String : Any]]);
-//                        self.homePresenterDelegate?.tableDataFetchSuccess(dataList: arrayObject)
-//                    }
-//                }else {
-//                    self.homePresenterDelegate?.tableDataFetchFailed()
-//                }
-//        })
+                        self.homePresenterDelegate?.tableDataFetchSuccess(tableDataModel: tableModel!)
+                        
+                    }
+                }
+                catch let error as NSError {
+                    self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: "\(error.localizedDescription)")
+                }
+            }
+            catch let error as NSError{
+                self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: "\(error.localizedDescription)")
+            }
+        } else {
+             self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: API_URL_LOADING_ERROR)
+        }
     }
 }
-
+//MARK: - Extension for Protocol Methods
 extension HomeInteractor : HomePresenterToInteractor{
     
-    /// Set presenter delegate.
-    ///
-    /// - parameter delegate: Delegate object to set as presenter.
+    // Set presenter delegate.
+    // - parameter delegate: Delegate object to set as presenter.
     func setPresenterDelegate(delegate:HomeInteractorToPresenter){
         self.homePresenterDelegate = delegate
     }
-    
+    //fetch from file/API
     func fetchTableDataFromAPI(){
-        self.fetchTableContent()
+        do{
+            let reachability = try Reachability()
+            print(reachability.connection.description)
+            if (reachability.connection == .cellular ||
+                reachability.connection == .wifi){
+                self.fetchTableContent()
+            }
+            else{
+                self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: NETWORK_ERROR)
+                
+            }
+        }
+        catch let error as NSError {
+            self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: "\(error.localizedDescription)")
+        }
+        
+        
+        
+        
+        
     }
     
 }
-

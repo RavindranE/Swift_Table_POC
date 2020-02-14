@@ -8,12 +8,12 @@
 
 import Foundation
 import UIKit
-import Alamofire
-protocol HomeViewToPresenter:class{
 
+
+protocol HomeViewToPresenter:class{
+    // Set View delegate.
     func setViewDelegate(delegate:HomePresenterToView)
     func initiateDataLoading()
-    
 }
 
 class HomeViewController: UIViewController, UITableViewDataSource {
@@ -21,11 +21,11 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     private var presenterDelegate:HomeViewToPresenter?
     //Initialize Table resource
     let tableDataView = UITableView(frame: UIScreen.main.bounds)
-    var dataList:Array<TableRows> = Array()
+    var dataList = [TableRows]()
     
     override func viewDidLoad() {
         super .viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 0.2431372549, green: 0.7647058824, blue: 0.8392156863, alpha: 1)//.white
         
         //SetDelegate
         self.presenterDelegate = HomePresenter()
@@ -37,8 +37,12 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         //Set Table as Child view of View
         view.addSubview(tableDataView)
         
+        tableDataView.estimatedRowHeight = 100
+        tableDataView.rowHeight = UITableView.automaticDimension
+        tableDataView.register(HomeTableCell.self, forCellReuseIdentifier: textCellIdentifier)
         //Set Table Source
         tableDataView.dataSource = self
+        //tableDataView.delegate = self
         
         //Table Layout Alignment
         self.tableLayoutAlignment()
@@ -47,20 +51,22 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     //MARK: - Set Auto Layout for Table
     func tableLayoutAlignment(){
-        
         tableDataView.translatesAutoresizingMaskIntoConstraints = false
-        tableDataView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableDataView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableDataView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        tableDataView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+
+        tableDataView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableDataView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableDataView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableDataView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
     }
     //MARK: - Set Controller Navigation
     func setControllerNavigation() {
         self.setNavigationTitle(navigationtitle:defaultNavigationTitle)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.2431372549, green: 0.7647058824, blue: 0.8392156863, alpha: 1)
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 1, green: 1, blue: 1, alpha: 1)]
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.tintColor = .blue
+        let rightButton = UIBarButtonItem(title: BTN_TITLE_REFRESH, style: .done, target: self, action: #selector(refreshTable))
+        navigationItem.rightBarButtonItem = rightButton
+
     }
     //MARK: - Set NavigationTitle
     func setNavigationTitle(navigationtitle:String){
@@ -77,36 +83,61 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableCell
-        cell.cellTitle.text = dataList[indexPath.row].title
-        cell.cellDescription.text = dataList[indexPath.row].description
-        
-        //Image loading
-        
-        AF.request(self.dataList[indexPath.row].imageHref!).responseData { (response) in
-            if response.error == nil {
-                print(response.result)
-                if let data = response.data {
-                    cell.cellImage.image = UIImage(data: data)
-                }
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as! HomeTableCell
+        //Clear Previous content
+        if let container = cell.viewWithTag(tagCellContainer){
+            if let titleLabel = container.viewWithTag(tagCellTitle) as? UILabel{
+                titleLabel.text = ""
             }
+            if let descriptionLabel = container.viewWithTag(tagCellDescription) as? UILabel{
+                descriptionLabel.text = ""
+            }
+            if let imgContainer = container.viewWithTag(tagCellImage) as? UIImageView{
+                imgContainer.image = nil
+                
+            }
+            
         }
+        cell.row = dataList[indexPath.row]
         
         return cell
     }
     
+    //MARK: - Refresh Table Display
     
+    
+    @objc func refreshTable(){
+        if (dataList.count > 0){
+            
+            self.tableDataView.setContentOffset(CGPoint(x: 0, y: -((self.navigationController?.navigationBar.frame.height)!)), animated: true)
+            
+            self.tableDataView.reloadData()
+        }
+    }
+    
+    //MARK: - Display User Info
+    func displayErrorInoToUser(errorInfo:String) {
+        let alertController = UIAlertController(title: TEXT_USER_INFO, message: errorInfo, preferredStyle: .alert)
+        let submitAction = UIAlertAction(title: TEXT_OK, style: .default)
+        alertController.addAction(submitAction)
+        
+        present(alertController, animated: true)
+    }
+    
+}
+//MARK: - Extension for Protocol Methods
+extension HomeViewController:HomePresenterToView{
+    func onTableDataResponseSuccess(tableDataModel:TableModel) {
+        //self.dataList = tableDataModel
+        self.setNavigationTitle(navigationtitle: tableDataModel.title!)
+        self.dataList = tableDataModel.rows!
+        self.tableDataView.reloadData()
+        
+    }
+    
+    func onTableDataResponseFailed(errorMessage:String){
+        print(errorMessage)
+        displayErrorInoToUser(errorInfo: errorMessage)
+    }
 }
 
-extension HomeViewController:HomePresenterToView{
-    func onTableDataResponseSuccess(tableDataArrayList: Array<TableRows>) {
-        self.dataList = tableDataArrayList
-        self.tableDataView.reloadData()
-    }
-    
-    func onTableDataResponseFailed(error: String) {
-        print("error")
-    }
-    
-    
-}
