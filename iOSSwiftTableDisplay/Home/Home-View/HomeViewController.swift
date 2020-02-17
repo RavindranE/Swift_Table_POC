@@ -78,8 +78,10 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         return 1;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataList.count
-        
+        if let rowCount = dataList.count as Int?  {
+            return rowCount
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,6 +114,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             self.tableDataView.setContentOffset(CGPoint(x: 0, y: -((self.navigationController?.navigationBar.frame.height)!)), animated: true)
             
             self.tableDataView.reloadData()
+        }
+        else{
+            presenterDelegate?.initiateDataLoading()
         }
     }
     
