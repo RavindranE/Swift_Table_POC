@@ -33,10 +33,10 @@ class HomeTableCell: UITableViewCell {
                                 self?.cellImageView.image = UIImage(data: data)
                             }
                         } else {
-                            print("Image Data Response error")
+                            print(imageDataError)
                         }
                     } else {
-                        print("Image File Response error")
+                        print(imageFileResponseError)
                     }
                 }
             }

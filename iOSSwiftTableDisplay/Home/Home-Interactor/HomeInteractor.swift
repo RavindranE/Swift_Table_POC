@@ -31,13 +31,13 @@ class HomeInteractor {
 
             case true:
 
-                print("Table Data Fetching is success")
+                print(apiResultDataSuccess)
 
                self.homePresenterDelegate?.tableDataFetchSuccess(tableDataModel: success!)
 
             case false:
 
-                print("Table Data Fetching is failure")
+                print(apiResultDataFailure)
 
                 self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: error!)
             }

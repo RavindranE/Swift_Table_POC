@@ -21,6 +21,12 @@ let BTN_TITLE_REFRESH = "Refresh"
 let defaultNavigationTitle = "Table Display"
 let textCellIdentifier = "Cell"
 
+let imageDataError = "Image Data Response error"
+let imageFileResponseError = "Image File Response error"
+
+let apiResultDataSuccess = "Table Data Fetching is success"
+let apiResultDataFailure = "Table Data Fetching is failure"
+
 let tagCellContainer = 100
 let tagCellTitle =  101
 let tagCellDescription = 102
