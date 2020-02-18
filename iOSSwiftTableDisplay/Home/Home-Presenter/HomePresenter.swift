@@ -11,58 +11,58 @@ import Foundation
 // Protocol communicating to Home.
 protocol HomePresenterToView {
     //Success Response
-    func onTableDataResponseSuccess(tableDataModel:TableModel)
+    func onTableDataResponseSuccess(tableDataModel: TableModel)
     //Failure Response
-    func onTableDataResponseFailed(errorMessage:String)
+    func onTableDataResponseFailed(errorMessage: String)
 }
 
 // Protocol communicating from presenter.
 protocol HomePresenterToInteractor {
     // Set Presenter delegate.
-    func setPresenterDelegate(delegate:HomeInteractorToPresenter)
+    func setPresenterDelegate(delegate: HomeInteractorToPresenter)
     func fetchTableDataFromAPI()
 }
 
-class HomePresenter{
-    private var viewDelegate :HomePresenterToView!
+class HomePresenter {
+    private var viewDelegate: HomePresenterToView!
     private var interactorDelegate: HomePresenterToInteractor!
-    
+
     init() {
         self.interactorDelegate = HomeInteractor()
         self.interactorDelegate.setPresenterDelegate(delegate: self)
     }
-    
+
     func initiateDataFetch() {
         self.interactorDelegate.fetchTableDataFromAPI()
     }
-    
+
 }
 
-//MARK: - Extension for Protocol Methods
-extension HomePresenter:HomeInteractorToPresenter{
+// MARK: - Extension for Protocol Methods
+extension HomePresenter: HomeInteractorToPresenter {
 
     // Update Home table Info success
-    func tableDataFetchSuccess(tableDataModel:TableModel){
+    func tableDataFetchSuccess(tableDataModel: TableModel) {
         viewDelegate.onTableDataResponseSuccess(tableDataModel: tableDataModel)
     }
-    
+
     // Update  Home table Info failure
-    func tableDataFetchFailed(errorMessage:String){
+    func tableDataFetchFailed(errorMessage: String) {
         viewDelegate.onTableDataResponseFailed(errorMessage: errorMessage)
     }
- 
+
 }
 
-extension HomePresenter : HomeViewToPresenter{
-    
+extension HomePresenter: HomeViewToPresenter {
+
     // Set View delegate.
     // - parameter delegate: Delegate object to set as presenter.
-    func setViewDelegate(delegate:HomePresenterToView){
+    func setViewDelegate(delegate: HomePresenterToView) {
         self.viewDelegate = delegate
     }
-    
-    func initiateDataLoading(){
+
+    func initiateDataLoading() {
         self.initiateDataFetch()
     }
-    
+
 }

@@ -13,14 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //Custom View Controller - HomeViewController
-        window = UIWindow(frame: UIScreen.main.bounds);
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         //Set Home View controller as Root view controller
-        window?.rootViewController = UINavigationController(rootViewController:HomeViewController())
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         return true
     }
 
@@ -46,6 +45,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-

@@ -13,19 +13,18 @@ private let TITLE = "title"
 private let ROWS = "rows"
 
 //Mappable model for Table tilte and Table rows
-class TableModel:Mappable{
-    
-    internal var rows:[TableRows]?
-    internal var title:String?
-    
-    
-    required init?(map:Map) {
+class TableModel: Mappable {
+
+    internal var rows: [TableRows]?
+    internal var title: String?
+
+    required init?(map: Map) {
         mapping(map: map)
     }
-    
-    func mapping(map:Map){
+
+    func mapping(map: Map) {
         title <- map[TITLE]
         rows <- map[ROWS]
     }
-    
+
 }

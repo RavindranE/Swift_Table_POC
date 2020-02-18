@@ -14,21 +14,21 @@ private let DESCRIPTION = "description"
 private let IMAGEHREF = "imageHref"
 
 //Mappable Object for row
-class TableRows:Mappable{
-    
-    internal var title:String?
-    internal var description:String?
-    internal var imageHref:String?
-    
-    required init?(map:Map) {
+class TableRows: Mappable {
+
+    internal var title: String?
+    internal var description: String?
+    internal var imageHref: String?
+
+    required init?(map: Map) {
         mapping(map: map)
     }
-    
-    func mapping(map:Map){
+
+    func mapping(map: Map) {
 
         title <- map[TITLE]
         description <- map[DESCRIPTION]
         imageHref <- map[IMAGEHREF]
     }
-    
+
 }

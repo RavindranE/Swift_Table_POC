@@ -8,8 +8,7 @@
 
 import Foundation
 //API URL
-let API_TABLE_CONTENT_LIST :String = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-
+let API_TABLE_CONTENT_LIST: String = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 
 //Genric Error / Messages
 let API_URL_LOADING_ERROR = "URL is not loaded"
