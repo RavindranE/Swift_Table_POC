@@ -9,6 +9,6 @@ target 'iOSSwiftTableDisplay' do
     pod 'Alamofire'
     pod 'AlamofireObjectMapper'
     pod 'ReachabilitySwift'
-    
+    pod 'SwiftLint'
 
 end

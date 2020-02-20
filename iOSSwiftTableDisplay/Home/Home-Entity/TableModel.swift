@@ -26,5 +26,4 @@ class TableModel: Mappable {
         title <- map[TITLE]
         rows <- map[ROWS]
     }
-
 }

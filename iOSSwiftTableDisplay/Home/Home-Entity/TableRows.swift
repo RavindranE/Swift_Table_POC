@@ -30,5 +30,4 @@ class TableRows: Mappable {
         description <- map[DESCRIPTION]
         imageHref <- map[IMAGEHREF]
     }
-
 }

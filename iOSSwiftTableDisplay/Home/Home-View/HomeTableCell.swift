@@ -15,9 +15,7 @@ class HomeTableCell: UITableViewCell {
     var row: TableRows? {
         didSet {
             guard let rowItem = row else {return}
-
             if let title = rowItem.title {
-
                 self.titleLabel.text = "\(title)"
             }
             if let description = rowItem.description {
@@ -32,33 +30,13 @@ class HomeTableCell: UITableViewCell {
                             DispatchQueue.main.async { [weak self] in
                                 self?.cellImageView.image = UIImage(data: data)
                             }
-                        } else {
-                            print(imageDataError)
                         }
-                    } else {
-                        print(imageFileResponseError)
                     }
                 }
             }
-            //For GCD approach
-            //            if let imageFile = rowItem.imageHref {
-            //                let fileURL = URL(string: "\(imageFile)")
-            //                self.loadImage(url: fileURL!)
-            //            }
         }
     }
-    //GCD for Image Download
-    /*func loadImage(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.cellImageView.image = image
-                    }
-                }
-            }
-        }
-    }*/
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
        //Initialize custom cell
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -79,8 +57,7 @@ class HomeTableCell: UITableViewCell {
         imageObj.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
         imageObj.layer.cornerRadius = 10
         imageObj.clipsToBounds = true
-        imageObj.tag = tagCellImage
-
+        imageObj.tag = Constants.tagCellImage
         return imageObj
     }()
     //Cell Title
@@ -91,7 +68,7 @@ class HomeTableCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.tag = tagCellTitle
+        label.tag = Constants.tagCellTitle
         return label
     }()
 
@@ -101,11 +78,10 @@ class HomeTableCell: UITableViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor =  .black
         label.backgroundColor =  .white
-
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.tag = tagCellDescription
+        label.tag = Constants.tagCellDescription
         return label
     }()
 
@@ -113,15 +89,13 @@ class HomeTableCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        view.tag = tagCellContainer
+        view.tag = Constants.tagCellContainer
         return view
     }()
 
     //Activate required object constraint
     func activateConstraints() {
-
         let marginGuide = contentView.layoutMarginsGuide
-
         containerView.centerYAnchor.constraint(equalTo: marginGuide.centerYAnchor).isActive = true
         containerView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: -10).isActive = true
@@ -130,8 +104,8 @@ class HomeTableCell: UITableViewCell {
         cellImageView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
         cellImageView.widthAnchor.constraint(equalToConstant: 90).isActive = true
         cellImageView.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        
         titleLabel.topAnchor.constraint(equalTo: self.cellImageView.bottomAnchor).isActive = true
-        //
         titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
 
@@ -164,7 +138,6 @@ class HomeTableCell: UITableViewCell {
             views: ["imageData": self.cellImageView, "bodyLabel": self.titleLabel, "detailLabel": self.descriptionLabel])
 
         allConstraints += labelsConstraint
-
         NSLayoutConstraint.activate(allConstraints)
     }
 }

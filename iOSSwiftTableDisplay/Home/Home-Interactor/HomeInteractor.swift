@@ -10,36 +10,32 @@ import Foundation
 import ObjectMapper
 import Reachability
 
-protocol HomeInteractorToPresenter {
+protocol HomeInteractorToPresenter{
     // Update Home table Info success
     func tableDataFetchSuccess(tableDataModel: TableModel)
-
     // Update  Home table Info failure
     func tableDataFetchFailed(errorMessage: String)
 }
 
 class HomeInteractor {
-
     private var homePresenterDelegate: HomeInteractorToPresenter?
-
     // Method to fetch the file content as json to map with required mappable object
     private func fetchTableContent() {
         let urlString: String = self.getAPIURL()
         self.initiateTableDataAPIRequest(urlString: urlString, completionHandler: {(status, success, error) in
-
             switch status {
-
             case true:
-
-                print(apiResultDataSuccess)
-
-               self.homePresenterDelegate?.tableDataFetchSuccess(tableDataModel: success!)
-
+                guard let fetchedDataModel = success else{
+                    return
+                }
+                self.homePresenterDelegate?.tableDataFetchSuccess(tableDataModel: fetchedDataModel)
+                break
             case false:
-
-                print(apiResultDataFailure)
-
-                self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: error!)
+                guard let resultError = error else{
+                    return
+                }
+                self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: resultError)
+                break
             }
         })
     }
@@ -58,7 +54,6 @@ class HomeInteractor {
                         let tableModel = Mapper<TableModel>().map(JSONObject: json)
                         //remove the row item where all elements are empty
                         tableModel?.rows?.removeAll(where: { $0.title == nil && $0.description == nil && $0.imageHref == nil })
-
                         completionHandler(true, tableModel, nil)
                     }
                 } catch let error as NSError {
@@ -68,20 +63,17 @@ class HomeInteractor {
                 completionHandler(false, nil, error.localizedDescription)
             }
         } else {
-            completionHandler(false, nil, API_URL_LOADING_ERROR)
-
+            completionHandler(false, nil, NSLocalizedString("API_URL_LOADING_ERROR", comment: "API Loading Error Message"))
         }
-
     }
 
     func getAPIURL() -> String {
-        return API_TABLE_CONTENT_LIST
+        return NSLocalizedString("API_TABLE_CONTENT_LIST", comment: "API URL String")
     }
 }
 
 // MARK: - Extension for Protocol Methods
 extension HomeInteractor: HomePresenterToInteractor {
-
     // Set presenter delegate.
     // - parameter delegate: Delegate object to set as presenter.
     func setPresenterDelegate(delegate: HomeInteractorToPresenter) {
@@ -91,18 +83,15 @@ extension HomeInteractor: HomePresenterToInteractor {
     func fetchTableDataFromAPI() {
         do {
             let reachability = try Reachability()
-            print(reachability.connection.description)
             if reachability.connection == .cellular ||
                 reachability.connection == .wifi {
                 self.fetchTableContent()
             } else {
-                self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: NETWORK_ERROR)
+                self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: NSLocalizedString("NETWORK_ERROR", comment: "Network Error"))
 
             }
         } catch let error as NSError {
             self.homePresenterDelegate?.tableDataFetchFailed(errorMessage: "\(error.localizedDescription)")
         }
-
     }
-
 }
